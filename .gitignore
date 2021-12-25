@@ -3,3 +3,10 @@
 ################################################################################
 
 /.vs
+/GitHubIssueClassification/bin/Debug/net6.0
+/GitHubIssueClassification/obj
+/IrisFlowerClustering/bin/Debug/net6.0
+/IrisFlowerClustering/obj
+/SentimentAnalysis/bin/Debug/net6.0
+/SentimentAnalysis/obj
+/TaxiFarePrediction/obj
