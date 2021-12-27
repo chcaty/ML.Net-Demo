@@ -1,11 +1,11 @@
 ﻿using IrisFlowerClustering.Models;
 using Microsoft.ML;
 
-var _dataPath = Path.Combine(Environment.CurrentDirectory, "Data", "iris.data");
-var _modelPath = Path.Combine(Environment.CurrentDirectory, "Data", "IrisClusteringModel.zip");
+var dataPath = Path.Combine(Environment.CurrentDirectory, "Data", "iris.data");
+var modelPath = Path.Combine(Environment.CurrentDirectory, "Data", "IrisClusteringModel.zip");
 
 var mlContext = new MLContext(seed: 0); 
-var dataView = mlContext.Data.LoadFromTextFile<IrisData>(_dataPath, hasHeader: false, separatorChar: ',');
+var dataView = mlContext.Data.LoadFromTextFile<IrisData>(dataPath, hasHeader: false, separatorChar: ',');
 
 // 创建学习管道
 var featuresColumnName = "Features";
@@ -17,7 +17,7 @@ var pipeline = mlContext.Transforms
 var model = pipeline.Fit(dataView);
 
 // 保存模型
-using (var fileStream = new FileStream(_modelPath, FileMode.Create, FileAccess.Write, FileShare.Write))
+using (var fileStream = new FileStream(modelPath, FileMode.Create, FileAccess.Write, FileShare.Write))
 {
     mlContext.Model.Save(model, dataView.Schema, fileStream);
 }
